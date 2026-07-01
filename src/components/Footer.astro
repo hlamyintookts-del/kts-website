@@ -1,0 +1,51 @@
+---
+// src/components/Footer.astro
+const socialLinks = [
+  { name: "Facebook", url: "https://www.facebook.com/share/187HcqKf3m/", icon: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z", color: "hover:bg-[#1877F2]" },
+  { name: "TikTok", url: "https://www.tiktok.com/@kilotaxiserviceofficial1?_r=1&_t=ZS-97XvUIWvRVk", icon: "M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5", color: "hover:bg-[#000000]" },
+  { name: "YouTube", url: "https://youtube.com/@kilotaxiservice?si=cAh44V7xEu28kDsN", icon: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33zM10.25 15.33V8.17L16.63 11.75z", color: "hover:bg-[#FF0000]" },
+  { name: "Telegram", url: "https://t.me/kilo-taxi", icon: "M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z", color: "hover:bg-[#0088CC]" },
+  // Viber icon အမှန်ကို ပြင်ထားပါသည်
+  { name: "Viber", url: "viber://chat?number=09xxxxxxxxx", icon: "M16.14 18.66c-.4 1.15-1.2 1.6-2.14 1.6-2.9 0-5.85-2.05-8.5-5.3C2.86 11.66 1.7 8.36 1.7 5.6c0-.9.45-1.7 1.6-2.1C3.95 3 4.55 3 5.4 3c.75 0 1.45.15 2.15.55.9.5 1.5 1.4 1.8 2.55L10 8.6c.45 1.35.1 2.25-.8 3.15l-1.15 1.15c-.45.45-.3 1.25.15 1.75 1.1 1.25 2.5 2.5 3.8 3.75.45.45 1.25.6 1.7.15l1.15-1.15c.9-.9 1.8-1.25 3.15-.8l2.45 1.15c1.15.4 2.05 1 2.55 1.9.45.65.6 1.4.6 2.15-.05 1.05-.5 1.85-1.6 2.2z", color: "hover:bg-[#7360F2]" }
+];
+---
+
+<footer class="bg-[#0A0A0A] border-t border-white/10 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="col-span-1 md:col-span-2">
+      <h2 class="text-2xl font-bold text-white mb-4">KILO <span class="text-[#F5C518]">TAXI SERVICE</span></h2>
+      <p class="text-gray-400 text-sm max-w-sm leading-relaxed">မြန်မာ့ပထမဆုံး Kilo-based စနစ်ဖြင့် စိတ်ချယုံကြည်စွာ သွားလာနိုင်မည့် Premium တက္ကစီဝန်ဆောင်မှု။</p>
+    </div>
+
+    <div>
+      <h3 class="text-white font-bold mb-4">လင့်ခ်များ</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#home" class="hover:text-[#F5C518] transition-colors">ပင်မစာမျက်နှာ</a></li>
+        <li><a href="#history" class="hover:text-[#F5C518] transition-colors">သမိုင်းမှတ်တမ်း</a></li>
+        <li><a href="#application" class="hover:text-[#F5C518] transition-colors">App ရယူရန်</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-white font-bold mb-4">ဆက်သွယ်ရန်</h3>
+      <div class="flex gap-4">
+        {socialLinks.map(link => (
+          <a 
+            href={link.url} 
+            target="_blank" 
+            title={link.name}
+            class={`w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 ${link.color} hover:text-white hover:scale-110 hover:shadow-lg transition-all duration-300 ease-out`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d={link.icon} />
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-white/5 text-center text-gray-600 text-xs">
+    © 2026 Kilo Taxi Service. All rights reserved.
+  </div>
+</footer>

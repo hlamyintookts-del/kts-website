@@ -1,0 +1,122 @@
+---
+
+import Logo from './Logo.astro';
+
+---
+
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#121212]/95 backdrop-blur-md border-b border-white/5 px-4 md:px-6 py-4">
+
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+    <div class="flex items-center gap-3">
+
+      <div class="w-14 h-14 flex-shrink-0"><Logo /></div>
+
+      <div class="flex flex-col group cursor-pointer">
+
+        <span class="text-white font-black text-base md:text-lg tracking-tight leading-none transition-transform duration-300 group-hover:-translate-y-1">
+
+          KILO <span class="text-[#F5C518]">TAXI SERVICE</span>
+
+        </span>
+
+        <span class="text-gray-400 text-[9px] md:text-[10px] tracking-widest uppercase font-semibold mt-1">Smart & Premium Mobility</span>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-sm">
+
+      <a href="#home" class="nav-link py-1 text-gray-400 hover:text-[#F5C518] transition-all duration-200" data-section="home">Home</a>
+
+      <a href="#fleet" class="nav-link py-1 text-gray-400 hover:text-[#F5C518] transition-all duration-200" data-section="fleet">Our Services</a>
+
+      <a href="#history" class="nav-link py-1 text-gray-400 hover:text-[#F5C518] transition-all duration-200" data-section="history">History</a>
+
+      <a href="#application" class="nav-link py-1 text-gray-400 hover:text-[#F5C518] transition-all duration-200" data-section="application">Application</a>
+
+      <a href="#features" class="nav-link py-1 text-gray-400 hover:text-[#F5C518] transition-all duration-200" data-section="features">Features</a>
+
+     
+
+      <a href="#application" class="px-4 py-2 bg-[#F5C518] text-black font-bold rounded-lg hover:bg-[#FFD700] transition-colors shadow-lg shadow-yellow-500/10">DOWNLOAD APP</a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+
+<script is:inline>
+
+  function setupScrollSpy() {
+
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const sections = document.querySelectorAll("section, div[id]");
+
+
+
+    // Refresh လုပ်ရင် Home ပြန်ရောက်အောင်လုပ်ပေးတဲ့ အပိုင်း
+
+    window.addEventListener("load", () => {
+
+      if (!window.location.hash) {
+
+        window.scrollTo(0, 0);
+
+        const home = document.getElementById('home');
+
+        if (home) home.scrollIntoView({ behavior: "smooth" });
+
+      }
+
+    });
+
+
+
+    // Scroll Spy လုပ်ဆောင်ချက်
+
+    window.addEventListener("scroll", () => {
+
+      let current = "";
+
+      sections.forEach((section) => {
+
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop <= 150 && sectionTop > -section.clientHeight + 150) {
+
+          current = section.getAttribute("id");
+
+        }
+
+      });
+
+
+
+      navLinks.forEach((link) => {
+
+        link.classList.remove("text-[#F5C518]", "font-bold", "border-b-2", "border-[#F5C518]");
+
+        if (link.getAttribute("data-section") === current) {
+
+          link.classList.add("text-[#F5C518]", "font-bold", "border-b-2", "border-[#F5C518]");
+
+        }
+
+      });
+
+    });
+
+  }
+
+  document.addEventListener('DOMContentLoaded', setupScrollSpy);
+
+</script>
+

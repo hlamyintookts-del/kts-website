@@ -1,0 +1,73 @@
+---
+// ပုံတွေအားလုံးကို ဒီမှာ စာရင်းလုပ်ထားပါ
+const allImages = [
+  { src: "https://i.ibb.co/chX5sfYf/car1.jpg" },
+  { src: "https://i.ibb.co/MD6BqLDy/car2.jpg" },
+  { src: "https://i.ibb.co/m58jSRpT/hero-bg.jpg" },
+  { src: "https://i.ibb.co/QvGXcV1Q/car4.jpg" },
+  { src: "https://i.ibb.co/BVG14xGh/car5.jpg" },
+  { src: "https://i.ibb.co/4gVdVM41/car6.jpg" },
+];
+
+const initialCount = 3;
+---
+
+<section id="fleet" class="py-20 bg-[#121212]">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4 leading-relaxed">ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုယာဉ်များ</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">ခေတ်မီဆန်းသစ်ပြီး သန့်ရှင်းသပ်ရပ်သော Premium ကားများဖြင့် ခရီးစဉ်တိုင်းကို စမတ်ကျကျ ပို့ဆောင်ပေးနေပါသည်။</p>
+    </div>
+
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl group border border-white/5">
+      <img 
+        src="https://i.ibb.co/hFD0xb3n/service1.jpg" 
+        alt="Kilo Taxi Service Fleet" 
+        class="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-bold text-white mb-3 leading-relaxed">ဘေးကင်းစိတ်ချရသော ခရီးစဉ်များ</h3>
+        <p class="text-gray-300 max-w-xl leading-relaxed text-sm md:text-base">
+          မြန်မာ့ပထမဆုံး Kilo-based စနစ်သုံး ကားကောင်း၊ ကားသန့်များဖြင့် သင့်စိတ်တိုင်းကျ ဝန်ဆောင်မှုပေးရန် အမြဲအသင့်ရှိနေပါသည်။
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="py-20 bg-[#0A0A0A] text-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12 text-center">Our Gallery</h2>
+    
+    <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {allImages.map((img, index) => (
+        <div class={`gallery-item ${index >= initialCount ? 'hidden' : ''}`}>
+          <img 
+            src={img.src} 
+            alt="Kilo Taxi Gallery Image" 
+            class="rounded-2xl w-full h-64 object-cover border border-white/10 hover:scale-105 transition-transform duration-300" 
+          />
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <button id="loadMoreBtn" class="px-8 py-4 bg-white/5 border border-white/10 hover:bg-[#F5C518] hover:text-black transition-all rounded-xl font-bold">
+        Load More
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('loadMoreBtn');
+  const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      hiddenItems.forEach(item => item.classList.remove('hidden'));
+      btn.style.display = 'none';
+    });
+  }
+</script>

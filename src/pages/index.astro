@@ -1,0 +1,41 @@
+---
+// index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import HomeGallery from '../components/HomeGallery.astro';
+import History from '../components/History.astro';
+import Application from '../components/Application.astro';
+import Features from '../components/Features.astro';
+import Footer from '../components/Footer.astro'; // Footer ကို Import ပြန်လုပ်ပါ
+---
+
+<MainLayout title="Kilo Taxi Service | Official Website">
+    <Navbar />
+    
+    <main class="pt-20">
+        <section id="home">
+            <Hero />
+        </section>
+
+        <section id="fleet">
+            <HomeGallery />
+        </section>
+        
+        <section id="history">
+            <History />
+        </section>
+        
+        <section id="application">
+            <Application />
+        </section>
+        
+        <section id="features">
+            <Features />
+        </section>
+
+        <section id="footer">
+            <Footer />
+        </section>
+    </main>
+</MainLayout>

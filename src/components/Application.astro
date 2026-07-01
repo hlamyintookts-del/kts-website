@@ -1,0 +1,178 @@
+---
+
+// src/components/Application.astro
+
+// ၁။ နောက်ဆုံးထွက် ဗားရှင်းဒေတာ (App Update Link သို့ သွားမည့်အပိုင်း)
+const latestVersion = {
+  version: "v1.0.63 (Stable)",
+  releaseDate: "June 2, 2026",
+  size: "112.5 MB",
+  // 🔗 ဒီနေရာမှာ App Update လုပ်မည့် Play Store Link သို့မဟုတ် Website Link ကို ထည့်ပါ
+  updatePageLink: "https://www.azmetertaxi.com/#", 
+  features: [
+    "မြန်မာ့ပထမဦးဆုံး Kilo-based Real-time Metering စနစ် ပိုမိုတိကျလာခြင်း",
+    "EV Taxi များအတွက် အားသွင်းရုံမြေပုံလမ်းညွှန်ချက်အသစ် ထည့်သွင်းခြင်း",
+    "Internet လိုင်းအားနည်းချိန်တွင် တွက်ချက်မှု ပိုမိုတည်ငြိမ်အောင် ပြင်ဆင်ခြင်း",
+    "Driver Wallet ထဲသို့ ငွေဖြည့်သွင်းမှုစနစ် ပိုမိုမြန်ဆန်လာခြင်း"
+  ]
+};
+
+// ၂။ ဗားရှင်းအဟောင်းများ ဒေတာ (Direct Download APK ရမည့်အပိုင်း)
+const oldVersions = [
+  { 
+    version: "v1.0.62(1118)", 
+    date: "May 2, 2026", 
+    size: "111.8 MB", 
+    type: "Stable", 
+    note: "Odometer Calibration Optimized",
+    directDownloadLink: "https://www.azmetertaxi.com/#" // APK တိုက်ရိုက်ဒေါင်းလုဒ် Link
+  },
+  { 
+    version: "v2.0.0", 
+    date: "April 05, 2026", 
+    size: "22.1 MB", 
+    type: "Major Update", 
+    note: "Fuel Tracker Integration",
+    directDownloadLink: "https://www.azmetertaxi.com/#"
+  },
+  { 
+    version: "v1.9.8", 
+    date: "Feb 18, 2026", 
+    size: "19.5 MB", 
+    type: "Security Patch", 
+    note: "Bug fixes & Driver Auth improvements",
+    directDownloadLink: "https://www.azmetertaxi.com/#"
+  }
+];
+---
+
+<section id="application" class="py-24 bg-[#0A0A0A] text-white relative overflow-hidden border-t border-white/5">
+  <div class="absolute top-1/4 left-0 w-96 h-96 bg-[#FFD700]/5 blur-[120px] rounded-full pointer-events-none"></div>
+  <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-amber-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-[#FFD700] text-xs font-bold tracking-[0.25em] uppercase bg-[#FFD700]/10 px-4 py-1.5 rounded-full border border-[#FFD700]/20">
+        Download Center
+      </span>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-4 font-['Plus_Jakarta_Sans']">
+        ဆော့ဖ်ဝဲလ်ရယူရန်နှင့် <span class="bg-gradient-to-r from-[#FFD700] to-amber-500 bg-clip-text text-transparent">ဗားရှင်းမှတ်တမ်း</span>
+      </h2>
+      <p class="text-gray-400 mt-4 text-base leading-relaxed">
+        Kilo Taxi စနစ်ကို အမြဲတမ်း စိတ်ချရပြီး အဆင်ပြေဆုံး အသုံးပြုနိုင်ရန် နောက်ဆုံးထွက် ဗားရှင်းကို Update ပြုလုပ်သုံးစွဲရန် အကြံပြုအပ်ပါသည်။
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <div class="lg:col-span-7 bg-[#121212] border border-white/5 rounded-3xl p-6 md:p-8 relative shadow-2xl">
+        <div class="absolute top-0 right-0 bg-gradient-to-bl from-[#FFD700]/20 to-transparent w-32 h-32 rounded-tr-3xl pointer-events-none"></div>
+        
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/5 pb-6">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <h3 class="text-2xl font-bold tracking-wide">Latest Version</h3>
+            </div>
+            <p class="text-gray-400 text-sm mt-1">Released on {latestVersion.releaseDate}</p>
+          </div>
+          <div class="bg-[#FFD700] text-black text-xs font-black px-4 py-2 rounded-xl tracking-wider uppercase">
+            {latestVersion.version}
+          </div>
+        </div>
+
+        <div class="my-6">
+          <h4 class="text-[#FFD700] font-bold text-sm tracking-wide uppercase mb-4">ယခုဗားရှင်းတွင် အသစ်ပြင်ဆင်ထားချက်များ</h4>
+          <ul class="space-y-3">
+            {latestVersion.features.map((feature) => (
+              <li class="flex items-start gap-3 text-sm text-gray-300 leading-relaxed">
+                <svg class="w-5 h-5 text-[#FFD700] shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="text-xs text-gray-500 bg-white/5 rounded-xl p-3 flex justify-between mb-6">
+          <span><strong>File Size:</strong> {latestVersion.size}</span>
+          <span><strong>Action:</strong> App Update Redirect</span>
+        </div>
+
+        <a 
+          href={latestVersion.updatePageLink} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="flex items-center justify-center gap-3 bg-gradient-to-r from-[#FFD700] to-amber-500 text-black font-extrabold py-4 px-6 rounded-2xl shadow-lg shadow-[#FFD700]/10 hover:shadow-[#FFD700]/20 hover:scale-[1.01] transition-all duration-300 w-full text-center text-sm tracking-wider uppercase"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+          </svg>
+          Update App Now (သွားရန်)
+        </a>
+      </div>
+
+      <div class="lg:col-span-5 flex flex-col h-full justify-between">
+        <div class="bg-[#121212] border border-white/5 rounded-3xl p-6 md:p-8 shadow-2xl w-full h-full">
+          <div class="border-b border-white/5 pb-4 mb-6">
+            <h3 class="text-xl font-bold tracking-wide flex items-center gap-2">
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
+              </svg>
+              Version History (အဟောင်းများ)
+            </h3>
+            <p class="text-gray-400 text-xs mt-1">အဆင်မပြေမှုရှိပါက ယခင်ဗားရှင်းများကို တိုက်ရိုက်ဒေါင်းလုဒ်ဆွဲရန်</p>
+          </div>
+
+          <div class="space-y-4 max-h-[360px] overflow-y-auto pr-2 custom-scrollbar">
+            {oldVersions.map((old) => (
+              <div class="bg-white/[0.02] border border-white/5 hover:border-white/10 rounded-2xl p-4 flex items-center justify-between gap-4 transition-all duration-200 group">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-bold text-gray-200 group-hover:text-[#FFD700] transition-colors">{old.version}</span>
+                    <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-gray-400 font-medium">{old.type}</span>
+                  </div>
+                  <span class="text-[11px] text-gray-500">{old.date} • {old.size}</span>
+                  <span class="text-xs text-gray-400 italic font-light mt-1 block">"{old.note}"</span>
+                </div>
+                
+                <a 
+                  href={old.directDownloadLink} 
+                  download
+                  class="w-12 h-12 rounded-xl bg-white/5 flex flex-col items-center justify-center hover:bg-[#FFD700] hover:text-black text-gray-400 transition-all duration-300 shrink-0 group/btn" 
+                  title="Direct Download APK"
+                >
+                  <svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                  </svg>
+                  <span class="text-[8px] uppercase font-bold mt-0.5 opacity-80">APK</span>
+                </a>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 215, 0, 0.3);
+  }
+</style>
